@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import './questoes.dart';
 
-class PerguntaApp extends StatelessWidget {
-  //const PerguntaApp({super.key});
+/*
+class Pessoa {
+ String? Nome;
+  String? _cpf;
+}
 
+ main (){
+  var p1 = Pessoa();
+  p1.Nome = 'Luiz';
+  p1._cpf = '079.199.023-04';
+
+  print('O ${p1.Nome} tem o CPF ${p1._cpf}');
+ }
+*/
+
+class PerguntaAppState extends State<PerguntaApp> {
   var perguntaSelecionada = 0;
 
   void responder() {
-    perguntaSelecionada++;
-    print('Pergunta respondida');
+    setState(() {
+      perguntaSelecionada++;
+    });
+    print(perguntaSelecionada);
   }
 
   @override
@@ -22,6 +38,7 @@ class PerguntaApp extends StatelessWidget {
         appBar: AppBar(title: Text('Perguntas')),
         body: Column(
           children: [
+            Questao(perguntas[perguntaSelecionada]),
             Text(perguntas[0]),
             ElevatedButton(onPressed: responder, child: Text('Resposta 1')),
 
@@ -42,6 +59,46 @@ class PerguntaApp extends StatelessWidget {
     );
   }
 }
+
+class PerguntaApp extends StatefulWidget {
+  PerguntaAppState createState() {
+    return PerguntaAppState();
+  }
+
+  //const PerguntaApp({super.key});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 void main() {
   runApp(const MyApp());
