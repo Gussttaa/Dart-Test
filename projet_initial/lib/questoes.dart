@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Questao extends StatelessWidget {
   final String Texto;
-  Questao(this.Texto);
+  const Questao(this.Texto, {super.key});
 
   @override
   Widget build(BuildContext context) {
