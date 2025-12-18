@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+//import 'main.dart';
 import 'questoes.dart';
 import 'resposta.dart';
 
@@ -30,13 +30,13 @@ class Questionario extends StatelessWidget {
     //      ? (perguntas[perguntaSelecionada]  ['respostas'] as List<String>)
     List<Widget> widgets = respostas
         .map((resp) => Resposta(resp['texto'] as String,
-            () => responder(resp['pontuacao'].toString() as int)))
+            () => responder(resp['pontuacao'] as int)))
         .toList();
     //
     return Column(
         children: <Widget>[
           Questao(perguntas[perguntaSelecionada]['pergunta'] as String),
           ...widgets,
-        ],
+        ]
     );
 }}
