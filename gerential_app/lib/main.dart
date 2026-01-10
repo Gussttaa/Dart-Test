@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'models/transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,59 +17,135 @@ class MyApp extends StatelessWidget {
 
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:  MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyHomePage extends StatelessWidget {
+  MyHomePage({super.key});
+  final _transactions = [
+    Transaction (
+      id: 't1',
+      title: 'Gasolina',
+      value: 250.55,
+      dateTime: DateTime.now(),
+    ),
+    Transaction (
+      id: 't1',
+      title: 'Almoço no restaurante',
+      value: 125.75,
+      dateTime: DateTime.now(),
+    ),
+  ];
 
-  final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
+        title: Text('Despesas Pessoais'),
       ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget> [
+      Container(
+        height: 230,
+        child: Card(
+          elevation: 5,
+          child: Text('Carrossel de notificações'),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          Container(
+            height: 230,
+            child: Card(
+              elevation: 5,
+              child: Text('Despesas pessoais'),
+            ),
+          ),
+          Container(
+            height: 230,
+            child: Card(
+              elevation: 5,
+              child: Column (
+                  children: _transactions.map((tr) {
+                    return Card(
+                      child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(tr.title),
+                            Text('Valor: R\$ ${tr.value}'),
+                            Text('Data: ${tr.dateTime.day}/${tr.dateTime.month}/${tr.dateTime.year}'),
+                          ],
+                        ),
+                      
+                          
+                      ),
+                    );
+                  }).toList()),
+            ),
+          ),
+        ],
       ),
+
+
     );
   }
 }
+
+
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({super.key, required this.title});
+//
+//   final String title;
+//
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+//
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _counter = 0;
+//
+//   void _incrementCounter() {
+//     setState(() {
+//
+//       _counter++;
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//
+//     return Scaffold(
+//       appBar: AppBar(
+//
+//         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+//
+//         title: Text(widget.title),
+//       ),
+//       body: Center(
+//
+//         child: Column(
+//
+//           mainAxisAlignment: .center,
+//           children: [
+//             const Text('You have pushed the button this many times:'),
+//             Text(
+//               '$_counter',
+//               style: Theme.of(context).textTheme.headlineMedium,
+//             ),
+//           ],
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: _incrementCounter,
+//         tooltip: 'Increment',
+//         child: const Icon(Icons.add),
+//       ),
+//     );
+//   }
+// }
