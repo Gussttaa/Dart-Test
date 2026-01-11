@@ -1,3 +1,5 @@
+//import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 
@@ -37,6 +39,18 @@ class MyHomePage extends StatelessWidget {
       value: 125.75,
       dateTime: DateTime.now(),
     ),
+    Transaction (
+      id: 't3',
+      title: 'Gastos com a Egide',
+      value: 250.55,
+      dateTime: DateTime.now(),
+    ),
+    Transaction (
+      id: 't4',
+      title: 'Hot Wheels',
+      value: 125.75,
+      dateTime: DateTime.now(),
+    ),
   ];
 
 
@@ -56,37 +70,46 @@ class MyHomePage extends StatelessWidget {
         height: 230,
         child: Card(
           elevation: 5,
+          child: SingleChildScrollView(
           child: Text('Carrossel de notificações'),
+        ),
         ),
       ),
           Container(
             height: 230,
             child: Card(
               elevation: 5,
+              child: SingleChildScrollView(
               child: Text('Despesas pessoais'),
+            ),
             ),
           ),
           Container(
             height: 230,
             child: Card(
               elevation: 5,
+              child: SingleChildScrollView(
               child: Column (
                   children: _transactions.map((tr) {
                     return Card(
                       child: Padding(
                           padding: const EdgeInsets.all(8.0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+
+
                           children: [
                             Text(tr.title),
                             Text('Valor: R\$ ${tr.value}'),
                             Text('Data: ${tr.dateTime.day}/${tr.dateTime.month}/${tr.dateTime.year}'),
                           ],
                         ),
-                      
-                          
+
+
                       ),
                     );
                   }).toList()),
+              ),
             ),
           ),
         ],
