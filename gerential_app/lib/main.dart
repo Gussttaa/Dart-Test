@@ -1,5 +1,5 @@
 //import 'dart:nativewrappers/_internal/vm/lib/internal_patch.dart';
-
+import 'package:app_financeiro/pop_up/add_expenses.dart';
 import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 
@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      // title: 'Flutter Demo',
+      // theme: ThemeData(
+      //
+      //   colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+      // ),
       home:  MyHomePage(),
     );
   }
@@ -56,11 +56,23 @@ class MyHomePage extends StatelessWidget {
 
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Despesas Pessoais'),
+        title: Text('Expenses'),
+        actions:[
+        IconButton(
+          padding: EdgeInsets.symmetric(
+            horizontal: 25,
+          ),
+          icon:  Icon(Icons.add_circle_outline_sharp),
+            onPressed: () => {
+
+            },
+        ),
+      ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -96,16 +108,12 @@ class MyHomePage extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
-
-
                           children: [
                             Text(tr.title),
                             Text('Valor: R\$ ${tr.value}'),
                             Text('Data: ${tr.dateTime.day}/${tr.dateTime.month}/${tr.dateTime.year}'),
                           ],
                         ),
-
-
                       ),
                     );
                   }).toList()),
@@ -114,61 +122,6 @@ class MyHomePage extends StatelessWidget {
           ),
         ],
       ),
-
-
     );
   }
 }
-
-
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key, required this.title});
-//
-//   final String title;
-//
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-//
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-//
-//   void _incrementCounter() {
-//     setState(() {
-//
-//       _counter++;
-//     });
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//
-//     return Scaffold(
-//       appBar: AppBar(
-//
-//         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-//
-//         title: Text(widget.title),
-//       ),
-//       body: Center(
-//
-//         child: Column(
-//
-//           mainAxisAlignment: .center,
-//           children: [
-//             const Text('You have pushed the button this many times:'),
-//             Text(
-//               '$_counter',
-//               style: Theme.of(context).textTheme.headlineMedium,
-//             ),
-//           ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: const Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }
