@@ -53,9 +53,18 @@ class MyHomePage extends StatelessWidget {
     ),
   ];
 
-
-
-
+  void _openTransactionFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true, // Faz o modal subir com o teclado
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (_) {
+        return const modal_expenses(); // Chama o widget do seu arquivo add_expenses.dart
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +77,7 @@ class MyHomePage extends StatelessWidget {
             horizontal: 25,
           ),
           icon:  Icon(Icons.add_circle_outline_sharp),
-            onPressed: () => {
-
-            },
+            onPressed: () => _openTransactionFormModal(context),
         ),
       ],
       ),
